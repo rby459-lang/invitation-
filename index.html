@@ -7,55 +7,130 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap');
+        
+        :root {
+            --primary-color: #f72585; /* Vibrant Pink */
+            --secondary-color: #7209b7; /* Deep Purple */
+            --accent-color-1: #4361ee; /* Bright Blue */
+            --accent-color-2: #4895ef; /* Lighter Blue */
+            --light-bg-color: #212529; /* Dark Gray */
+            --card-bg-color: #2c2f33; /* Slightly lighter dark card */
+            --text-color: #ffffff; /* White text color for better contrast */
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+            background: var(--light-bg-color);
+            color: var(--text-color);
+            background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.5) 0%, rgba(33, 37, 41, 0.5) 100%);
+            background-attachment: fixed;
         }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', 'Noto Sans Devangari', serif;
+            color: var(--primary-color);
         }
-        .chart-container {
+        
+        .hindi-text {
+            font-family: 'Noto Sans Devangari', 'Poppins', sans-serif;
+        }
+
+        .shadow-custom {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .shadow-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-dot {
+            transition: transform 0.3s ease;
+        }
+        .timeline-dot:hover {
+            transform: scale(1.2);
+        }
+
+        .countdown-box {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .countdown-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 10px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
             position: relative;
+            z-index: 10;
+        }
+
+        .bg-white {
+            background-color: rgba(26, 26, 46, 0.85);
+        }
+        .text-gray-800 {
+            color: var(--text-color);
+        }
+
+        /* --- Smiley Animation --- */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .smiley-animation {
+            animation: bounce 2s infinite ease-in-out;
+            display: inline-block;
+        }
+
+        /* --- Crackers/Fireworks Canvas --- */
+        #crackersCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 40vh;
-            max-height: 400px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
         }
     </style>
 </head>
 <body class="text-gray-800">
-
+    <!-- Crackers Canvas -->
+    <canvas id="crackersCanvas"></canvas>
+    
     <main class="container mx-auto p-4 md:p-8">
         
-        <header class="text-center p-8 bg-white rounded-lg shadow-lg mb-8">
-            <h1 class="text-4xl md:text-6xl font-bold" style="color: #073B4C;">Save the Date</h1>
-            <p class="text-xl mt-2" style="color: #118AB2;">We're celebrating the engagement of</p>
-            <h2 class="text-5xl md:text-7xl mt-4" style="color: #FF6B6B;">Raju & Pramila</h2>
-            <img src="WhatsApp Image 2025-08-16 at 9.26.36 PM.jpeg" alt="Raju and Pramila" class="mt-6 mx-auto w-full max-w-sm rounded-xl shadow-2xl">
+        <header class="text-center p-8 rounded-lg shadow-custom mb-8" style="background-color: rgba(26, 26, 46, 0.85);">
+            <h1 class="text-5xl md:text-6xl font-bold flex items-center justify-center gap-4" style="color: var(--primary-color);">
+                <span class="text-7xl smiley-animation">&#128147;</span>
+                Save the Date
+                <span class="text-7xl smiley-animation">&#128147;</span>
+            </h1>
+            <p class="text-xl mt-2" style="color: var(--text-color);">You are invited to engagement of</p>
+            <h2 class="text-6xl md:text-7xl mt-4 font-bold" style="color: var(--accent-color-1);">Raju & Pramila</h2>
+            <img src="WhatsApp Image 2025-08-16 at 9.26.36 PM.jpeg" alt="Raju and Pramila" class="mt-6 mx-auto w-full max-w-sm rounded-xl shadow-custom">
         </header>
 
-        <section class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <section class="rounded-lg shadow-custom p-8 mb-8" style="background-color: rgba(26, 26, 46, 0.85);">
             <div class="text-center">
-                <h3 class="text-3xl font-bold mb-2" style="color: #073B4C;">The Celebration Begins In...</h3>
-                <p class="text-md mb-6" style="color: #118AB2;">The countdown is on! We're eagerly anticipating the moment we celebrate together. Here's exactly how long until the special day.</p>
+                <h3 class="text-3xl font-bold mb-2" style="color: var(--primary-color);">The Celebration Begins In...</h3>
+                <p class="text-md mb-6" style="color: var(--text-color);">The countdown is on! We're eagerly anticipating the moment we celebrate together. Here's exactly how long until the special day.</p>
                 <div id="countdown" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center max-w-2xl mx-auto">
-                    <div class="p-4 rounded-lg" style="background-color: #FFD166;">
-                        <span id="days" class="text-4xl font-bold" style="color: #073B4C;"></span>
-                        <span class="block text-sm" style="color: #073B4C;">Days</span>
+                    <div class="p-4 rounded-lg countdown-box" style="background-color: var(--accent-color-2);">
+                        <span id="days" class="text-4xl md:text-5xl font-bold" style="color: #ffffff;"></span>
+                        <span class="block text-sm text-white">Days</span>
                     </div>
-                    <div class="p-4 rounded-lg" style="background-color: #06D6A0;">
-                        <span id="hours" class="text-4xl font-bold" style="color: #073B4C;"></span>
-                        <span class="block text-sm" style="color: #073B4C;">Hours</span>
+                    <div class="p-4 rounded-lg countdown-box" style="background-color: var(--secondary-color);">
+                        <span id="hours" class="text-4xl md:text-5xl font-bold" style="color: #ffffff;"></span>
+                        <span class="block text-sm text-white">Hours</span>
                     </div>
-                    <div class="p-4 rounded-lg" style="background-color: #118AB2;">
-                        <span id="minutes" class="text-4xl font-bold text-white"></span>
+                    <div class="p-4 rounded-lg countdown-box" style="background-color: var(--primary-color);">
+                        <span id="minutes" class="text-4xl md:text-5xl font-bold text-white"></span>
                         <span class="block text-sm text-white">Minutes</span>
                     </div>
-                    <div class="p-4 rounded-lg" style="background-color: #FF6B6B;">
-                        <span id="seconds" class="text-4xl font-bold text-white"></span>
+                    <div class="p-4 rounded-lg countdown-box" style="background-color: var(--accent-color-1);">
+                        <span id="seconds" class="text-4xl md:text-5xl font-bold text-white"></span>
                         <span class="block text-sm text-white">Seconds</span>
                     </div>
                 </div>
@@ -63,63 +138,74 @@
         </section>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <section class="bg-white rounded-lg shadow-lg p-8">
-                <h3 class="text-3xl font-bold text-center mb-2" style="color: #073B4C;">Our Journey</h3>
-                 <p class="text-md mb-6 text-center" style="color: #118AB2;">Every love story is beautiful, but ours is our favorite. Here are a few of the milestones that led us to this wonderful day.</p>
+            <section class="rounded-lg shadow-custom p-8" style="background-color: rgba(26, 26, 46, 0.85);">
+                <h3 class="text-3xl font-bold text-center mb-2" style="color: var(--primary-color);">Our Journey</h3>
+                 <p class="text-md mb-6 text-center" style="color: var(--primary-color);">Every love story is beautiful, but ours is our favorite. Here are a few of the milestones that led us to this wonderful day.</p>
                 <div class="relative pl-8">
-                    <div class="absolute left-0 top-0 bottom-0 w-1" style="background-color: #FFD166;"></div>
+                    <div class="absolute left-0 top-0 bottom-0 w-1 rounded-full" style="background-color: var(--text-color);"></div>
                     <div class="mb-8 relative">
-                        <div class="absolute -left-11 top-2 w-6 h-6 rounded-full" style="background-color: #FF6B6B; border: 4px solid white;"></div>
-                        <h4 class="font-bold text-lg" style="color: #FF6B6B;">The Day We Met</h4>
-                        <p class="text-sm">A chance encounter that started it all.</p>
+                        <div class="absolute -left-11 top-2 w-6 h-6 rounded-full timeline-dot" style="background-color: var(--accent-color-1); border: 4px solid var(--card-bg-color);"></div>
+                        <h4 class="font-bold text-xl" style="color: var(--accent-color-1);">The Day We Met</h4>
+                        <p class="text-md" style="color: var(--text-color);">A chance encounter that started it all.</p>
                     </div>
                     <div class="mb-8 relative">
-                        <div class="absolute -left-11 top-2 w-6 h-6 rounded-full" style="background-color: #06D6A0; border: 4px solid white;"></div>
-                        <h4 class="font-bold text-lg" style="color: #06D6A0;">The Proposal</h4>
-                        <p class="text-sm">A heartfelt question, and a joyful "Yes!"</p>
+                        <div class="absolute -left-11 top-2 w-6 h-6 rounded-full timeline-dot" style="background-color: var(--secondary-color); border: 4px solid var(--card-bg-color);"></div>
+                        <h4 class="font-bold text-xl" style="color: var(--secondary-color);">The Proposal</h4>
+                        <p class="text-md" style="color: var(--text-color);">A heartfelt question, and a joyful "Yes!"</p>
                     </div>
                     <div class="relative">
-                        <div class="absolute -left-11 top-2 w-6 h-6 rounded-full" style="background-color: #118AB2; border: 4px solid white;"></div>
-                        <h4 class="font-bold text-lg" style="color: #118AB2;">The Engagement</h4>
-                        <p class="text-sm">Celebrating our commitment with you.</p>
+                        <div class="absolute -left-11 top-2 w-6 h-6 rounded-full timeline-dot" style="background-color: var(--primary-color); border: 4px solid var(--card-bg-color);"></div>
+                        <h4 class="font-bold text-xl" style="color: var(--primary-color);">The Engagement</h4>
+                        <p class="text-md" style="color: var(--text-color);">Celebrating our commitment with you.</p>
                     </div>
                 </div>
             </section>
             
-            <section class="bg-white rounded-lg shadow-lg p-8">
-                <h3 class="text-3xl font-bold text-center mb-2" style="color: #073B4C;">Joining the Celebration</h3>
-                <p class="text-md mb-6 text-center" style="color: #118AB2;">Our celebration is made complete by the wonderful people in our lives. This chart represents the loving circle of friends and family coming together.</p>
+            <section class="rounded-lg shadow-custom p-8" style="background-color: rgba(26, 26, 46, 0.85);">
+                <h3 class="text-3xl font-bold text-center mb-2" style="color: var(--primary-color);">Joining the Celebration</h3>
+                <p class="text-md mb-6 text-center" style="color: var(--primary-color);">Our celebration is made complete by the wonderful people in our lives. This chart represents the loving circle of friends and family coming together.</p>
                 <div class="chart-container">
                     <canvas id="guestChart"></canvas>
                 </div>
             </section>
         </div>
 
-        <section class="bg-white rounded-lg shadow-lg p-8 mt-8">
-            <h3 class="text-3xl font-bold text-center mb-6" style="color: #073B4C;">Event Details</h3>
+        <section class="rounded-lg shadow-custom p-8 mt-8" style="background-color: rgba(26, 26, 46, 0.85);">
+            <h3 class="text-3xl font-bold text-center mb-6" style="color: var(--primary-color);">Event Details</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-center">
-                <div class="p-6 rounded-lg border-2" style="border-color: #06D6A0;">
+                <div class="p-6 rounded-lg border-2 shadow-sm" style="border-color: var(--secondary-color);">
                     <span class="text-4xl">📅</span>
-                    <h4 class="font-bold text-xl mt-2" style="color: #073B4C;">Date</h4>
-                    <p class="text-lg">Monday, October 13, 2025</p>
+                    <h4 class="font-bold text-xl mt-2" style="color: var(--primary-color);">Date</h4>
+                    <p class="text-lg font-bold" style="color: var(--text-color);">Monday, October 13, 2025</p>
                 </div>
-                 <div class="p-6 rounded-lg border-2" style="border-color: #FFD166;">
+                 <div class="p-6 rounded-lg border-2 shadow-sm" style="border-color: var(--accent-color-2);">
                     <span class="text-4xl">⏰</span>
-                    <h4 class="font-bold text-xl mt-2" style="color: #073B4C;">Time</h4>
-                    <p class="text-lg">5:00 PM Onwards</p>
+                    <h4 class="font-bold text-xl mt-2" style="color: var(--primary-color);">Time </h4>
+                    <p class="text-lg font-bold" style="color: var(--text-color);">10:00 AM Onwards</p>
                 </div>
-                 <div class="p-6 rounded-lg border-2" style="border-color: #FF6B6B;">
+                 <div class="p-6 rounded-lg border-2 shadow-sm" style="border-color: var(--accent-color-1);">
                     <span class="text-4xl">📍</span>
-                    <h4 class="font-bold text-xl mt-2" style="color: #073B4C;">Venue</h4>
-                    <p class="text-lg">Lucknow</p>
+                    <h4 class="font-bold text-xl mt-2" style="color: var(--primary-color);">Venue</h4>
+                    <p class="text-lg font-bold" style="color: var(--text-color);">Lucknow</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="rounded-lg shadow-custom p-8 mt-8" style="background-color: rgba(26, 26, 46, 0.85);">
+            <div class="text-center space-y-4">
+                <p class="text-lg" style="color: var(--text-color);">
+                    Andi Bandi Sandi Jo Na Aaya... 😉💃🕺😂
+                </p>
+                 <p class="text-md hindi-text" style="color: var(--text-color);" lang="hi">
+                    अंडी बंडी संडी जो न आया... 😉💃🕺😂
+                </p>
             </div>
         </section>
         
     </main>
     
-    <footer class="text-center p-4 mt-8">
-        <p style="color: #118AB2;">We can't wait to share our special day with you!</p>
+    <footer class="text-center p-4 mt-8" style="color: var(--text-color);">
+        <p>We can't wait to share our special day with you!</p>
     </footer>
 
     <script>
@@ -131,7 +217,7 @@
 
             if (distance < 0) {
                 clearInterval(countdownFunction);
-                document.getElementById("countdown").innerHTML = "<div class='col-span-4 text-center text-2xl font-bold' style='color: #FF6B6B;'>The celebration is here!</div>";
+                document.getElementById("countdown").innerHTML = "<div class='col-span-4 text-center text-2xl font-bold' style='color: var(--accent-color-1);'>The celebration is here!</div>";
                 return;
             }
 
@@ -163,7 +249,7 @@
             lines.push(currentLine.trim());
             return lines;
         }
-
+        
         const guestCtx = document.getElementById('guestChart').getContext('2d');
         const guestData = {
             labels: ['Family', 'Friends of Raju', 'Friends of Pramila'],
@@ -171,11 +257,11 @@
                 label: 'Guest Breakdown',
                 data: [50, 25, 25],
                 backgroundColor: [
-                    '#FF6B6B',
-                    '#FFD166',
-                    '#06D6A0',
+                    '#4361ee', // Bright Blue
+                    '#f72585', // Vibrant Pink
+                    '#7209b7', // Deep Purple
                 ],
-                borderColor: '#ffffff',
+                borderColor: '#212529',
                 borderWidth: 4,
                 hoverOffset: 10
             }]
@@ -197,7 +283,7 @@
                                 size: 14,
                                 family: "'Poppins', sans-serif"
                             },
-                            color: '#073B4C'
+                            color: 'var(--text-color)'
                         }
                     },
                     tooltip: {
@@ -216,6 +302,135 @@
                 }
             }
         });
+
+        // --- Crackers/Fireworks Animation Script ---
+        const canvas = document.getElementById('crackersCanvas');
+        const ctx = canvas.getContext('2d');
+        let fireworks = [];
+        let particles = [];
+
+        // Set canvas size and make it responsive
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Cracker Particle class
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.radius = 2;
+                this.velocity = {
+                    x: (Math.random() - 0.5) * Math.random() * 8, // Faster, wider spread
+                    y: (Math.random() - 0.5) * Math.random() * 8
+                };
+                this.alpha = 1;
+                this.friction = 0.97; // Slower fade
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.velocity.x *= this.friction;
+                this.velocity.y *= this.friction;
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= 0.01; // Slower fade
+            }
+        }
+
+        // Cracker Rocket class
+        class Firework {
+            constructor(x, y, targetX, targetY, color) {
+                this.x = x;
+                this.y = y;
+                this.targetX = targetX;
+                this.targetY = targetY;
+                this.color = color;
+                this.velocity = {
+                    x: (targetX - x) / 50,
+                    y: (targetY - y) / 50
+                };
+                this.alpha = 1;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= 0.005;
+            }
+
+            // Explode the firework into particles
+            explode() {
+                const count = 100;
+                for (let i = 0; i < count; i++) {
+                    particles.push(new Particle(this.x, this.y, this.color));
+                }
+            }
+        }
+
+        function createFirework() {
+            const x = Math.random() * canvas.width;
+            const y = canvas.height;
+            const targetX = Math.random() * canvas.width;
+            const targetY = Math.random() * canvas.height * 0.5;
+            const colors = ['#ff595e', '#ffca3a', '#8ac926', '#1982c4', '#6a4c93', '#f48c06', '#9a031e', '#e63946', '#2a9d8f'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            fireworks.push(new Firework(x, y, targetX, targetY, color));
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.fillStyle = 'rgba(26, 26, 46, 0.2)'; // Fading trail effect
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            fireworks.forEach((firework, index) => {
+                firework.draw();
+                firework.update();
+
+                const distance = Math.hypot(firework.targetX - firework.x, firework.targetY - firework.y);
+                if (distance < 5 || firework.alpha <= 0) {
+                    firework.explode();
+                    fireworks.splice(index, 1);
+                }
+            });
+
+            particles.forEach((particle, index) => {
+                particle.draw();
+                particle.update();
+                if (particle.alpha <= 0) {
+                    particles.splice(index, 1);
+                }
+            });
+        }
+
+        setInterval(createFirework, 200); // Launch a new cracker every 0.2 seconds
+        
+        window.onload = function() {
+            animate();
+        };
     </script>
 </body>
 </html>
