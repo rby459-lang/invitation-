@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engagement Celebration | Raju & Pramila</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center p-8 bg-white rounded-lg shadow-lg mb-8">
+            <h1 class="text-4xl md:text-6xl font-bold" style="color: #073B4C;">Save the Date</h1>
+            <p class="text-xl mt-2" style="color: #118AB2;">We're celebrating the engagement of</p>
+            <h2 class="text-5xl md:text-7xl mt-4" style="color: #FF6B6B;">Raju & Pramila</h2>
+            <img src="https://storage.googleapis.com/gwm-beta-content/uploaded:WhatsApp%20Image%202025-08-16%20at%209.26.36%20PM.jpg-cac56862-d390-44b6-9a02-0ddd35d66a29" alt="Raju and Pramila" class="mt-6 mx-auto w-full max-w-sm rounded-xl shadow-2xl">
+        </header>
+
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <div class="text-center">
+                <h3 class="text-3xl font-bold mb-2" style="color: #073B4C;">The Celebration Begins In...</h3>
+                <p class="text-md mb-6" style="color: #118AB2;">The countdown is on! We're eagerly anticipating the moment we celebrate together. Here's exactly how long until the special day.</p>
+                <div id="countdown" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center max-w-2xl mx-auto">
+                    <div class="p-4 rounded-lg" style="background-color: #FFD166;">
+                        <span id="days" class="text-4xl font-bold" style="color: #073B4C;"></span>
+                        <span class="block text-sm" style="color: #073B4C;">Days</span>
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: #06D6A0;">
+                        <span id="hours" class="text-4xl font-bold" style="color: #073B4C;"></span>
+                        <span class="block text-sm" style="color: #073B4C;">Hours</span>
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: #118AB2;">
+                        <span id="minutes" class="text-4xl font-bold text-white"></span>
+                        <span class="block text-sm text-white">Minutes</span>
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: #FF6B6B;">
+                        <span id="seconds" class="text-4xl font-bold text-white"></span>
+                        <span class="block text-sm text-white">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <section class="bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-3xl font-bold text-center mb-2" style="color: #073B4C;">Our Journey</h3>
+                 <p class="text-md mb-6 text-center" style="color: #118AB2;">Every love story is beautiful, but ours is our favorite. Here are a few of the milestones that led us to this wonderful day.</p>
+                <div class="relative pl-8">
+                    <div class="absolute left-0 top-0 bottom-0 w-1" style="background-color: #FFD166;"></div>
+                    <div class="mb-8 relative">
+                        <div class="absolute -left-11 top-2 w-6 h-6 rounded-full" style="background-color: #FF6B6B; border: 4px solid white;"></div>
+                        <h4 class="font-bold text-lg" style="color: #FF6B6B;">The Day We Met</h4>
+                        <p class="text-sm">A chance encounter that started it all.</p>
+                    </div>
+                    <div class="mb-8 relative">
+                        <div class="absolute -left-11 top-2 w-6 h-6 rounded-full" style="background-color: #06D6A0; border: 4px solid white;"></div>
+                        <h4 class="font-bold text-lg" style="color: #06D6A0;">The Proposal</h4>
+                        <p class="text-sm">A heartfelt question, and a joyful "Yes!"</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-11 top-2 w-6 h-6 rounded-full" style="background-color: #118AB2; border: 4px solid white;"></div>
+                        <h4 class="font-bold text-lg" style="color: #118AB2;">The Engagement</h4>
+                        <p class="text-sm">Celebrating our commitment with you.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-3xl font-bold text-center mb-2" style="color: #073B4C;">Joining the Celebration</h3>
+                <p class="text-md mb-6 text-center" style="color: #118AB2;">Our celebration is made complete by the wonderful people in our lives. This chart represents the loving circle of friends and family coming together.</p>
+                <div class="chart-container">
+                    <canvas id="guestChart"></canvas>
+                </div>
+            </section>
+        </div>
+
+        <section class="bg-white rounded-lg shadow-lg p-8 mt-8">
+            <h3 class="text-3xl font-bold text-center mb-6" style="color: #073B4C;">Event Details</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-center">
+                <div class="p-6 rounded-lg border-2" style="border-color: #06D6A0;">
+                    <span class="text-4xl">📅</span>
+                    <h4 class="font-bold text-xl mt-2" style="color: #073B4C;">Date</h4>
+                    <p class="text-lg">Monday, October 13, 2025</p>
+                </div>
+                 <div class="p-6 rounded-lg border-2" style="border-color: #FFD166;">
+                    <span class="text-4xl">⏰</span>
+                    <h4 class="font-bold text-xl mt-2" style="color: #073B4C;">Time</h4>
+                    <p class="text-lg">5:00 PM Onwards</p>
+                </div>
+                 <div class="p-6 rounded-lg border-2" style="border-color: #FF6B6B;">
+                    <span class="text-4xl">📍</span>
+                    <h4 class="font-bold text-xl mt-2" style="color: #073B4C;">Venue</h4>
+                    <p class="text-lg">Lucknow</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <footer class="text-center p-4 mt-8">
+        <p style="color: #118AB2;">We can't wait to share our special day with you!</p>
+    </footer>
+
+    <script>
+        const countdownDate = new Date("October 13, 2025 17:00:00").getTime();
+
+        const countdownFunction = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "<div class='col-span-4 text-center text-2xl font-bold' style='color: #FF6B6B;'>The celebration is here!</div>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }, 1000);
+
+        function formatLabel(str, maxLen) {
+            if (str.length <= maxLen) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLen) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const guestCtx = document.getElementById('guestChart').getContext('2d');
+        const guestData = {
+            labels: ['Family', 'Friends of Raju', 'Friends of Pramila'],
+            datasets: [{
+                label: 'Guest Breakdown',
+                data: [50, 25, 25],
+                backgroundColor: [
+                    '#FF6B6B',
+                    '#FFD166',
+                    '#06D6A0',
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 4,
+                hoverOffset: 10
+            }]
+        };
+
+        new Chart(guestCtx, {
+            type: 'doughnut',
+            data: guestData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: {
+                                size: 14,
+                                family: "'Poppins', sans-serif"
+                            },
+                            color: '#073B4C'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
