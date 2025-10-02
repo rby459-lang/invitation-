@@ -29,7 +29,7 @@
         }
         
         h1, h2, h3, h4 {
-            font-family: 'Playfair Display', 'Noto Sans Devangari', serif;
+            font-family: 'Playfair Display', 'Noto Sans Devanagari', serif;
             color: var(--primary-color);
         }
         
@@ -109,7 +109,12 @@
             </h1>
             <p class="text-xl mt-2" style="color: var(--text-color);">You are invited to engagement of</p>
             <h2 class="text-6xl md:text-7xl mt-4 font-bold" style="color: var(--accent-color-1);">Raju & Pramila</h2>
-            <img src="WhatsApp Image 2025-08-16 at 9.26.36 PM.jpeg" alt="Raju and Pramila" class="mt-6 mx-auto w-full max-w-sm rounded-xl shadow-custom">
+            <!-- Placeholder image used for demonstration purposes. Use your actual image here. -->
+            <img src="https://placehold.co/400x400/f72585/ffffff?text=Raju+%26+Pramila" 
+                 alt="Raju and Pramila" 
+                 class="mt-6 mx-auto w-full max-w-sm rounded-xl shadow-custom"
+                 onerror="this.onerror=null; this.src='https://placehold.co/400x400/f72585/ffffff?text=Raju+%26+Pramila';"
+            >
         </header>
 
         <section class="rounded-lg shadow-custom p-8 mb-8" style="background-color: rgba(26, 26, 46, 0.85);">
@@ -140,7 +145,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <section class="rounded-lg shadow-custom p-8" style="background-color: rgba(26, 26, 46, 0.85);">
                 <h3 class="text-3xl font-bold text-center mb-2" style="color: var(--primary-color);">Our Journey</h3>
-                 <p class="text-md mb-6 text-center" style="color: var(--primary-color);">Every love story is beautiful, but ours is our favorite. Here are a few of the milestones that led us to this wonderful day.</p>
+                   <p class="text-md mb-6 text-center" style="color: var(--primary-color);">Every love story is beautiful, but ours is our favorite. Here are a few of the milestones that led us to this wonderful day.</p>
                 <div class="relative pl-8">
                     <div class="absolute left-0 top-0 bottom-0 w-1 rounded-full" style="background-color: var(--text-color);"></div>
                     <div class="mb-8 relative">
@@ -178,26 +183,36 @@
                     <h4 class="font-bold text-xl mt-2" style="color: var(--primary-color);">Date</h4>
                     <p class="text-lg font-bold" style="color: var(--text-color);">Monday, October 13, 2025</p>
                 </div>
-                 <div class="p-6 rounded-lg border-2 shadow-sm" style="border-color: var(--accent-color-2);">
+                   <div class="p-6 rounded-lg border-2 shadow-sm" style="border-color: var(--accent-color-2);">
                     <span class="text-4xl">⏰</span>
-                    <h4 class="font-bold text-xl mt-2" style="color: var(--primary-color);">Time </h4>
-                    <p class="text-lg font-bold" style="color: var(--text-color);">10:00 AM Onwards</p>
+                    <h4 class="font-bold text-xl mt-2" style="color: var(--primary-color);">Time </h4>
+                    <!-- TIME UPDATED TO 1:00 PM to 5:00 PM -->
+                    <p class="text-lg font-bold" style="color: var(--text-color);">1:00 PM to 5:00 PM</p>
                 </div>
-                 <div class="p-6 rounded-lg border-2 shadow-sm" style="border-color: var(--accent-color-1);">
+                   <div class="p-6 rounded-lg border-2 shadow-sm" style="border-color: var(--accent-color-1);">
                     <span class="text-4xl">📍</span>
                     <h4 class="font-bold text-xl mt-2" style="color: var(--primary-color);">Venue</h4>
-                    <p class="text-lg font-bold" style="color: var(--text-color);">Lucknow</p>
+                    <p class="text-lg font-bold" style="color: var(--text-color);">
+                        <a href="https://maps.app.goo.gl/zJgvBruwogs3yPGy8" target="_blank" class="hover:underline" style="color: var(--text-color);">
+                            Lucknow (View Map)
+                        </a>
+                    </p>
                 </div>
             </div>
         </section>
 
+        <!-- New Section: Ganesh Invocation -->
         <section class="rounded-lg shadow-custom p-8 mt-8" style="background-color: rgba(26, 26, 46, 0.85);">
             <div class="text-center space-y-4">
-                <p class="text-lg" style="color: var(--text-color);">
-                    Andi Bandi Sandi Jo Na Aaya... 😉💃🕺😂
+                <div class="text-5xl mb-4 font-extrabold" style="color: var(--primary-color);">
+                    &#x5350; <!-- Swastik Symbol -->
+                </div>
+                <h4 class="text-3xl font-bold" style="color: var(--primary-color);">Ganesh Vandana</h4>
+                <p class="text-2xl hindi-text font-extrabold" style="color: var(--text-color);" lang="hi">
+                    ॥ श्री गणेशाय नमः ॥
                 </p>
-                 <p class="text-md hindi-text" style="color: var(--text-color);" lang="hi">
-                    अंडी बंडी संडी जो न आया... 😉💃🕺😂
+                <p class="text-md italic" style="color: var(--accent-color-2);">
+                    (Invoking Lord Ganesha's blessings for a joyous beginning)
                 </p>
             </div>
         </section>
@@ -209,7 +224,8 @@
     </footer>
 
     <script>
-        const countdownDate = new Date("October 13, 2025 17:00:00").getTime();
+        // Set the countdown date to October 13, 2025, 1 PM (13:00:00)
+        const countdownDate = new Date("October 13, 2025 13:00:00").getTime();
 
         const countdownFunction = setInterval(() => {
             const now = new Date().getTime();
@@ -226,30 +242,14 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerText = days;
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes;
-            document.getElementById("seconds").innerText = seconds;
+            // Pad single digits with a leading zero for aesthetics
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
         }, 1000);
 
-        function formatLabel(str, maxLen) {
-            if (str.length <= maxLen) {
-                return str;
-            }
-            const words = str.split(' ');
-            let lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + word).length > maxLen) {
-                    lines.push(currentLine.trim());
-                    currentLine = '';
-                }
-                currentLine += word + ' ';
-            }
-            lines.push(currentLine.trim());
-            return lines;
-        }
-        
+        // Chart.js configuration for Guest Breakdown (Doughnut Chart)
         const guestCtx = document.getElementById('guestChart').getContext('2d');
         const guestData = {
             labels: ['Family', 'Friends of Raju', 'Friends of Pramila'],
@@ -257,9 +257,9 @@
                 label: 'Guest Breakdown',
                 data: [50, 25, 25],
                 backgroundColor: [
-                    '#4361ee', // Bright Blue
-                    '#f72585', // Vibrant Pink
-                    '#7209b7', // Deep Purple
+                    '#4361ee', // Bright Blue (Accent 1)
+                    '#f72585', // Vibrant Pink (Primary)
+                    '#7209b7', // Deep Purple (Secondary)
                 ],
                 borderColor: '#212529',
                 borderWidth: 4,
@@ -288,13 +288,14 @@
                     },
                     tooltip: {
                         callbacks: {
+                            // Ensure multi-line labels in tooltips work correctly
                             title: function(tooltipItems) {
                                 const item = tooltipItems[0];
                                 let label = item.chart.data.labels[item.dataIndex];
                                 if (Array.isArray(label)) {
-                                  return label.join(' ');
+                                    return label.join(' ');
                                 } else {
-                                  return label;
+                                    return label;
                                 }
                             }
                         }
@@ -359,6 +360,7 @@
                 this.targetX = targetX;
                 this.targetY = targetY;
                 this.color = color;
+                // Calculate velocity to reach the target in a fixed time
                 this.velocity = {
                     x: (targetX - x) / 50,
                     y: (targetY - y) / 50
@@ -395,6 +397,7 @@
             const x = Math.random() * canvas.width;
             const y = canvas.height;
             const targetX = Math.random() * canvas.width;
+            // Target the upper half of the screen
             const targetY = Math.random() * canvas.height * 0.5;
             const colors = ['#ff595e', '#ffca3a', '#8ac926', '#1982c4', '#6a4c93', '#f48c06', '#9a031e', '#e63946', '#2a9d8f'];
             const color = colors[Math.floor(Math.random() * colors.length)];
@@ -403,13 +406,16 @@
 
         function animate() {
             requestAnimationFrame(animate);
-            ctx.fillStyle = 'rgba(26, 26, 46, 0.2)'; // Fading trail effect
+            // Apply a semi-transparent dark overlay to create a fading trail effect
+            ctx.fillStyle = 'rgba(26, 26, 46, 0.2)'; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            // Update and draw fireworks rockets
             fireworks.forEach((firework, index) => {
                 firework.draw();
                 firework.update();
 
+                // Check if the rocket has reached its target (or faded away)
                 const distance = Math.hypot(firework.targetX - firework.x, firework.targetY - firework.y);
                 if (distance < 5 || firework.alpha <= 0) {
                     firework.explode();
@@ -417,6 +423,7 @@
                 }
             });
 
+            // Update and draw explosion particles
             particles.forEach((particle, index) => {
                 particle.draw();
                 particle.update();
@@ -426,8 +433,10 @@
             });
         }
 
-        setInterval(createFirework, 200); // Launch a new cracker every 0.2 seconds
+        // Launch a new cracker periodically
+        setInterval(createFirework, 200); 
         
+        // Start the animation loop when the window loads
         window.onload = function() {
             animate();
         };
